@@ -4,6 +4,7 @@
   "displayName": "Secret File Cautioner",
   "description": "Warns before opening files that may contain sensitive values (e.g. .env files)",
   "version": "0.0.1",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.82.0"
   },
