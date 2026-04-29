@@ -1,0 +1,2 @@
+This is a plain text file used as a control in integration tests.
+It should not trigger any warning.
