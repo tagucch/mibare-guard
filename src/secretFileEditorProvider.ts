@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { escapeHtml } from './htmlEscape';
 
-const VIEW_TYPE = 'secretFileCautioner.warningEditor';
+const VIEW_TYPE = 'mibareGuard.warningEditor';
 
 export const registerSecretFileEditor = (
   _context: vscode.ExtensionContext,
@@ -9,7 +9,7 @@ export const registerSecretFileEditor = (
 ): vscode.Disposable => {
   const provider: vscode.CustomTextEditorProvider = {
     resolveCustomTextEditor: async (document, webviewPanel, _token) => {
-      const config = vscode.workspace.getConfiguration('secretFileCautioner');
+      const config = vscode.workspace.getConfiguration('mibareGuard');
       const enabled = config.get<boolean>('enabled', true);
 
       // 拡張が無効 — デフォルトのテキストエディタで即座に開く

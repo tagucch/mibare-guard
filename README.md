@@ -1,4 +1,4 @@
-# Secret File Cautioner
+# MIBARE Guard
 
 機密情報が含まれる可能性のあるファイル (例: `.env`) を VS Code で開く際に、事前に警告ダイアログを表示する拡張機能です。画面共有中などに誤って機密情報を表示してしまう事故を防ぎます。
 
@@ -46,7 +46,7 @@
 
 ### Dynamic File Watcher (動的パターン)
 
-ユーザが `secretFileCautioner.filePatterns` に追加したパターンは、`onDidOpenTextDocument` イベントで検知し、タブを閉じたうえでモーダルダイアログを表示する方式で処理しています。
+ユーザが `mibareGuard.filePatterns` に追加したパターンは、`onDidOpenTextDocument` イベントで検知し、タブを閉じたうえでモーダルダイアログを表示する方式で処理しています。
 
 > 注: 動的パターンの場合、VS Code API の制約により、ファイル内容が一瞬だけ表示されてからタブが閉じる挙動になります。完全に内容を隠したい場合は、上記の Custom Editor 側 (静的パターン) に追加することを推奨します。
 
@@ -54,13 +54,13 @@
 
 | キー | 型 | デフォルト | 説明 |
 | --- | --- | --- | --- |
-| `secretFileCautioner.enabled` | `boolean` | `true` | 拡張機能の有効/無効 |
-| `secretFileCautioner.filePatterns` | `string[]` | `[".env"]` | 動的ウォッチャーが警告対象とするファイルパターン |
-| `secretFileCautioner.warningMessage` | `string` | `このファイルには公開すると危険な値が書かれている可能性があります。開きますか？` | 警告ダイアログに表示するメッセージ |
+| `mibareGuard.enabled` | `boolean` | `true` | 拡張機能の有効/無効 |
+| `mibareGuard.filePatterns` | `string[]` | `[".env"]` | 動的ウォッチャーが警告対象とするファイルパターン |
+| `mibareGuard.warningMessage` | `string` | `このファイルには公開すると危険な値が書かれている可能性があります。開きますか？` | 警告ダイアログに表示するメッセージ |
 
 ### ファイルパターンの書式
 
-`secretFileCautioner.filePatterns` は以下の2通りの書式をサポートします:
+`mibareGuard.filePatterns` は以下の2通りの書式をサポートします:
 
 - **部分一致**: 通常の文字列 (例: `.env`, `secret`, `credentials`)。ファイル名にその文字列が含まれていればマッチ
 - **正規表現**: スラッシュで囲む (例: `/^\.env.*/`, `/.*\.pem$/`)。内部で `RegExp` としてコンパイルされ、ファイル名に対して `test()` される
@@ -69,7 +69,7 @@
 
 ```json
 {
-  "secretFileCautioner.filePatterns": [
+  "mibareGuard.filePatterns": [
     ".env",
     "credentials",
     "/^secret\\..+/",

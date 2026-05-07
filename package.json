@@ -1,7 +1,7 @@
 {
-  "name": "secret-file-cautioner",
+  "name": "mibare-guard",
   "publisher": "tagucch",
-  "displayName": "Secret File Cautioner",
+  "displayName": "MIBARE Guard",
   "description": "Warns before opening files that may contain sensitive values (e.g. .env files)",
   "version": "0.0.1",
   "license": "MIT",
@@ -18,8 +18,8 @@
   "contributes": {
     "customEditors": [
       {
-        "viewType": "secretFileCautioner.warningEditor",
-        "displayName": "Secret File Cautioner",
+        "viewType": "mibareGuard.warningEditor",
+        "displayName": "MIBARE Guard",
         "selector": [
           {
             "filenamePattern": ".env"
@@ -65,14 +65,14 @@
       }
     ],
     "configuration": {
-      "title": "Secret File Cautioner",
+      "title": "MIBARE Guard",
       "properties": {
-        "secretFileCautioner.enabled": {
+        "mibareGuard.enabled": {
           "type": "boolean",
           "default": true,
           "description": "Enable or disable the secret file warning."
         },
-        "secretFileCautioner.filePatterns": {
+        "mibareGuard.filePatterns": {
           "type": "array",
           "default": [
             ".env"
@@ -82,7 +82,7 @@
           },
           "description": "File patterns that trigger the warning for the dynamic watcher. Supports partial match (e.g. '.env') and regex (e.g. '/^\\.env.*/')."
         },
-        "secretFileCautioner.warningMessage": {
+        "mibareGuard.warningMessage": {
           "type": "string",
           "default": "このファイルには公開すると危険な値が書かれている可能性があります。開きますか？",
           "description": "The warning message displayed when opening a sensitive file."

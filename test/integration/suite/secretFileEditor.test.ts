@@ -36,7 +36,7 @@ describe('SecretFileEditor (Custom Editor)', () => {
       const tab = vscode.window.tabGroups.activeTabGroup.activeTab;
       return (
         tab?.input instanceof vscode.TabInputCustom &&
-        tab.input.viewType === 'secretFileCautioner.warningEditor'
+        tab.input.viewType === 'mibareGuard.warningEditor'
       );
     });
   });
@@ -49,14 +49,14 @@ describe('SecretFileEditor (Custom Editor)', () => {
       const tab = vscode.window.tabGroups.activeTabGroup.activeTab;
       return (
         tab?.input instanceof vscode.TabInputCustom &&
-        tab.input.viewType === 'secretFileCautioner.warningEditor'
+        tab.input.viewType === 'mibareGuard.warningEditor'
       );
     });
   });
 
   it('enabled=false のとき、.env は default text editor で開かれる', async () => {
     await vscode.workspace
-      .getConfiguration('secretFileCautioner')
+      .getConfiguration('mibareGuard')
       .update('enabled', false, vscode.ConfigurationTarget.Workspace);
 
     const uri = vscode.Uri.file(path.join(fixturesDir, '.env'));

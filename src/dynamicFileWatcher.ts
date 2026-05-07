@@ -42,7 +42,7 @@ export const registerDynamicFileWatcher = (
       return;
     }
 
-    const config = vscode.workspace.getConfiguration('secretFileCautioner');
+    const config = vscode.workspace.getConfiguration('mibareGuard');
     if (!config.get<boolean>('enabled', true)) {
       return;
     }

@@ -20,13 +20,13 @@ export const closeAllEditors = async (): Promise<void> => {
 };
 
 export const resetConfig = async (): Promise<void> => {
-  const config = vscode.workspace.getConfiguration('secretFileCautioner');
+  const config = vscode.workspace.getConfiguration('mibareGuard');
   await config.update('enabled', undefined, vscode.ConfigurationTarget.Workspace);
   await config.update('filePatterns', undefined, vscode.ConfigurationTarget.Workspace);
 };
 
 export const ensureExtensionActivated = async (): Promise<void> => {
-  const ext = vscode.extensions.getExtension('tagucch.secret-file-cautioner');
+  const ext = vscode.extensions.getExtension('tagucch.mibare-guard');
   if (!ext) {
     throw new Error('Extension not found');
   }

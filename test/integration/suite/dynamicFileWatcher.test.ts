@@ -39,7 +39,7 @@ describe('DynamicFileWatcher', () => {
 
   it('ユーザ定義パターンにマッチするファイルはタブが閉じられる', async () => {
     await vscode.workspace
-      .getConfiguration('secretFileCautioner')
+      .getConfiguration('mibareGuard')
       .update('filePatterns', ['.custom'], vscode.ConfigurationTarget.Workspace);
 
     const uri = vscode.Uri.file(path.join(fixturesDir, 'secret.custom'));
@@ -61,7 +61,7 @@ describe('DynamicFileWatcher', () => {
 
   it('対象外のファイル (regular.txt) はそのまま開かれたままになる', async () => {
     await vscode.workspace
-      .getConfiguration('secretFileCautioner')
+      .getConfiguration('mibareGuard')
       .update('filePatterns', ['.custom'], vscode.ConfigurationTarget.Workspace);
 
     const uri = vscode.Uri.file(path.join(fixturesDir, 'regular.txt'));

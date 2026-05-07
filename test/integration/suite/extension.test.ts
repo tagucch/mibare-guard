@@ -3,22 +3,22 @@ import * as vscode from 'vscode';
 
 describe('拡張の有効化', () => {
   it('拡張がインストール済みでアクティベートできる', async () => {
-    const ext = vscode.extensions.getExtension('tagucch.secret-file-cautioner');
-    assert.ok(ext, 'Extension tagucch.secret-file-cautioner が見つかる');
+    const ext = vscode.extensions.getExtension('tagucch.mibare-guard');
+    assert.ok(ext, 'Extension tagucch.mibare-guard が見つかる');
     await ext.activate();
     assert.strictEqual(ext.isActive, true, 'アクティベーション後に isActive === true');
   });
 
   it('package.json で Custom Editor を contribute している', () => {
-    const ext = vscode.extensions.getExtension('tagucch.secret-file-cautioner');
+    const ext = vscode.extensions.getExtension('tagucch.mibare-guard');
     assert.ok(ext);
     const editors = ext.packageJSON.contributes?.customEditors;
     assert.ok(Array.isArray(editors) && editors.length > 0, 'customEditors が存在する');
-    assert.strictEqual(editors[0].viewType, 'secretFileCautioner.warningEditor');
+    assert.strictEqual(editors[0].viewType, 'mibareGuard.warningEditor');
   });
 
   it('Custom Editor の selector に期待するパターンが含まれる', () => {
-    const ext = vscode.extensions.getExtension('tagucch.secret-file-cautioner');
+    const ext = vscode.extensions.getExtension('tagucch.mibare-guard');
     const editors = ext!.packageJSON.contributes.customEditors;
     const patterns: string[] = editors[0].selector.map(
       (s: { filenamePattern: string }) => s.filenamePattern,
