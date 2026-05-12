@@ -4,5 +4,3 @@ out/
 .vscode-test/
 *.vsix
 
-.claude/plans
-
